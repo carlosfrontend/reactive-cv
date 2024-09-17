@@ -14,7 +14,7 @@ function App() {
   return (
     <>
       <WelcomePage isVisited={isVisited} setIsVisited={setIsVisited}>
-        <p>CV Resume is a simple, light and <i>fast</i> APP for create you resume.</p>
+        <p><span>CV Resume</span> is a simple, light and <i>fast</i> APP for create you professional resume.</p>
       </WelcomePage>
     </>
   );

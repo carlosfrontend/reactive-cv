@@ -1,3 +1,9 @@
 .headerLogo{
     width: 14em;
 }
+
+@media (min-width: 768px) {
+    .headerLogo{
+        width: 24em;
+    }
+  }
