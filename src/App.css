@@ -1,0 +1,17 @@
+p{
+  padding: 1em;
+  color: wheat;
+  font-size: 1.5rem;
+  width: 20ch;
+  text-align: center;
+}
+
+button{
+  background-color: dodgerblue;
+  color: black;
+  font-size: 1.2rem;
+  padding: 1em;
+  border: none;
+  border-radius: 8px;
+  cursor:pointer;
+}
