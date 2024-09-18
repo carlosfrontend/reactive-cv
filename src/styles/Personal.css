@@ -1,0 +1,77 @@
+.navbar {
+  background-color: #dedf1a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  font-size: 1.4rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: 1px solid #000000;
+}
+
+.dropdown-logo {
+  width: 2em;
+}
+
+form {
+  padding: 1em;
+  border-bottom: 1px solid #00b3fb;
+}
+
+label {
+  padding-bottom: 0.5em;
+  font-size: 1.2rem;
+  color: #528feb;
+  font-weight: 800;
+}
+
+input {
+  padding: 0.2em 0.4em;
+  width: 100%;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  outline: none;
+  border: none;
+  margin-bottom: 1em;
+  font-weight: 700;
+  border: 1px solid #00b3fb;
+  height: 6vh;
+}
+
+input[type="file"] {
+  outline: none;
+  border: none;
+}
+
+input:focus {
+  outline: 2px solid #00b3fb;
+}
+
+.form-group {
+  width: 100%;
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+}
+.button-group {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1em;
+}
+
+.button-group button {
+  width: 4em;
+  border-radius: 8px;
+  font-size: 1.4rem;
+  padding: 0.2em 0.8em;
+  font-weight: 600;
+  border: 1px solid #00b3fb;
+  color: #00b3fb;
+  cursor: pointer;
+}
+
+.button-group button:hover {
+  outline: 2px solid #00b3fb;
+}

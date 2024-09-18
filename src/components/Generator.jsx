@@ -1,8 +1,8 @@
 import "../styles/Generator.css";
-import EducationalDropDown from "./EducationalDropDown";
+import PersonalInfoDropDown from "./PersonalInfoDropdown";
 
 export default function Generator() {
   return (<div className="generator-container">
-    <EducationalDropDown title='Educational Info'/>
+    <PersonalInfoDropDown title='Personal Info'/>
   </div>);
 }

@@ -1,0 +1,27 @@
+.header-button{
+    background-color: #00b3fb;
+    color: #0a1a3c;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 1em .5em;
+    border: none;
+    border-radius: 15px;
+    cursor:pointer;
+    transition: all .130s ease-in;
+  }
+  
+  .header-button:hover{
+    background-color: #ffffff;
+    color: #272626;
+    transform: scale(.9);
+    outline: 10px solid #00b3fb;
+    font-weight: 900;
+  }
+
+  @media (min-width: 768px){
+  
+    .header-button{
+      font-size: 1.8rem;
+      padding: 1em;
+    }
+  }
