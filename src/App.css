@@ -1,4 +1,4 @@
-p{
+.welcome-message{
   padding: 1em;
   color: #00b3fb;
   font-size: 1.8rem;
@@ -14,7 +14,6 @@ p{
 span{
   color:#ffffff;
 }
-
 
 @media (min-width: 768px){
   p {

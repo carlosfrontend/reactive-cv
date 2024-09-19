@@ -4,17 +4,19 @@ import WelcomePage from "./components/WelcomePage";
 import { useState } from "react";
 
 function App() {
-  
   const [isVisited, setIsVisited] = useState(false);
 
   if (isVisited) {
-    return <Generator/>;
+    return <Generator />;
   }
 
   return (
     <>
       <WelcomePage setIsVisited={setIsVisited}>
-        <p><span>CV Resume</span> is a simple, light and <i>fast</i> APP for create you professional resume.</p>
+        <p className="welcome-message">
+          <span>CV Resume</span> is a simple, light and <i>fast</i> APP for
+          create you professional resume.
+        </p>
       </WelcomePage>
     </>
   );

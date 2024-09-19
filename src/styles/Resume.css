@@ -1,0 +1,42 @@
+.resume-container{
+    padding: 1em;
+}
+
+.personal-data-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.img-container{
+    display: flex;
+    justify-content: start;
+    padding: 1em;
+}
+
+.profile-img{
+    width: 95px;
+    height: 95px;
+    object-fit: cover;
+    object-position: center center;
+    border-radius: 50%;
+}
+
+.personal-info{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.email-container, .phone-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5em;
+}
+
+.email-container img, .phone-container img {
+    width: 20px;
+    height: 20px;
+}
