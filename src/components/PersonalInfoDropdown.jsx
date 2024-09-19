@@ -2,6 +2,8 @@ import { useState } from "react";
 import arrowDownLogo from "../assets/arrow-down-drop-circle.svg";
 import arrowUpLogo from "../assets/arrow-up-drop-circle-outline.svg";
 import "../styles/Personal.css";
+import editLogo from "../assets/invoice-text-edit-outline.svg";
+import saveLogo from "../assets/content-save-outline.svg";
 
 export default function PersonalInfoDropDown({
   title,
@@ -10,7 +12,7 @@ export default function PersonalInfoDropDown({
   handleChangeProfileImage,
   handleSubmitPersonalInfo,
   isSentPersonalInfo,
-  handleEditPersonalInfo
+  handleEditPersonalInfo,
 }) {
   const [isActive, setIsActive] = useState(false);
 
@@ -95,7 +97,7 @@ export default function PersonalInfoDropDown({
             <label htmlFor="phone">
               Phone Number: <abbr title="required">*</abbr>
             </label>
-              <small> Format: 123-456-789</small>
+            <small> Format: 123-456-789</small>
             <input
               type="tel"
               name="phone"
@@ -126,8 +128,14 @@ export default function PersonalInfoDropDown({
           </div>
 
           <div className="button-group">
-            <button onClick={handleEditPersonalInfo} className="edit">Edit</button>
-            <button onSubmit={handleSubmitPersonalInfo} className="save">Save</button>
+            <button onClick={handleEditPersonalInfo} className="edit">
+              <img src={editLogo} alt="edit logo" />
+              Edit
+            </button>
+            <button onSubmit={handleSubmitPersonalInfo} className="save">
+              <img src={saveLogo} alt="save logo" />
+              Save
+            </button>
           </div>
         </form>
       )}

@@ -1,0 +1,37 @@
+.button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: 1em;
+    padding: .1em .6em;
+    font-size: 1.4rem;
+    border:none;
+    background: none;
+}
+
+.add-btn img{
+    width: 60px;
+    height: 60px;
+}
+
+.default-ed-info{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.default-ed-info h2 {
+    font-size: 1.9rem;
+    line-height: 1;
+}
+
+.default-ed-data{
+    padding: 1em 0;
+}

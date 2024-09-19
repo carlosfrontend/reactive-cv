@@ -1,8 +1,19 @@
 import { useState } from "react";
 import arrowDownLogo from "../assets/arrow-down-drop-circle.svg";
 import arrowUpLogo from "../assets/arrow-up-drop-circle-outline.svg";
+import "../styles/Educational.css";
+import plusLogo from "../assets/plus-circle.svg";
+import editLogo from "../assets/invoice-text-edit-outline.svg";
+import saveLogo from "../assets/content-save-outline.svg";
 
-export default function EducationalInfoDropdown({ title }) {
+export default function EducationalInfoDropdown({
+  title,
+  defaultEducationalData,
+  onChange,
+  handleSubmitDefaultEducationalInfo,
+  handleEditDefaultEducationalInfo,
+  isSentDefaultEducationalInfo
+}) {
   const [isActive, setIsActive] = useState(false);
 
   function handleNavChange() {
@@ -20,27 +31,68 @@ export default function EducationalInfoDropdown({ title }) {
           alt={!isActive ? "arrow up logo" : "arrow down logo"}
         />
       </nav>
+
       {isActive && (
-        <form>
-          <div className="form-group">
-            <label htmlFor="school">
-              School: <abbr title="required">*</abbr>
-            </label>
-            <input type="text" name="school" id="school" placeholder="School name here"/>
+        <>
+          <div className="button-container">
+            <button className="add-btn">
+              <img src={plusLogo} />
+            </button>
           </div>
-          <div className="form-group">
-            <label htmlFor="study-title">
-              Title: <abbr title="required">*</abbr>
-            </label>
-            <input type="text" name="study-title" id="study-title" placeholder="Title of study here"/>
+          <form onSubmit={handleSubmitDefaultEducationalInfo}>
+            <div className="form-group">
+              <label htmlFor="school">
+                School: <abbr title="required">*</abbr>
+              </label>
+              <input
+                type="text"
+                name="school"
+                id="school"
+                placeholder="School name here"
+                value={defaultEducationalData.schoolName}
+                onChange={onChange}
+                disabled={isSentDefaultEducationalInfo}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="studyTitle">
+                Title: <abbr title="required">*</abbr>
+              </label>
+              <input
+                type="text"
+                name="studyTitle"
+                id="studyTitle"
+                placeholder="Title of study here"
+                value={defaultEducationalData.studyTitle}
+                onChange={onChange}
+                disabled={isSentDefaultEducationalInfo}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="date">
+                Date: <abbr title="required">*</abbr>
+              </label>
+              <input
+                type="date"
+                name="date"
+                id="date"
+                value={defaultEducationalData.studyDate}
+                onChange={onChange}
+                disabled={isSentDefaultEducationalInfo}
+              />
+            </div>
+            <div className="button-group">
+            <button onClick={handleEditDefaultEducationalInfo} className="edit">
+              <img src={editLogo} alt="edit logo" />
+              Edit
+            </button>
+            <button onSubmit={handleSubmitDefaultEducationalInfo} className="save">
+              <img src={saveLogo} alt="save logo" />
+              Save
+            </button>
           </div>
-          <div className="form-group">
-          <label htmlFor="date">
-            Date: <abbr title="required">*</abbr>
-          </label>
-          <input type="date" name="date" id="date"/>
-          </div>
-        </form>
+          </form>
+        </>
       )}
     </section>
   );
