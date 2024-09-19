@@ -51,7 +51,6 @@ input:focus {
 .form-group {
   width: 100%;
   display: flex;
-  align-items: start;
   flex-direction: column;
 }
 .button-group {
@@ -70,6 +69,13 @@ input:focus {
   border: 1px solid #00b3fb;
   color: #00b3fb;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-group button > img {
+  width: 30px;
 }
 
 .button-group button:hover {

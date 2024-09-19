@@ -5,10 +5,10 @@ export default function Resume({
   profileImgUrl,
   personalData,
   isSentPersonalInfo,
+  defaultEducationalData,
+  isSentDefaultEducationalInfo,
 }) {
-
-  if (isSentPersonalInfo) {
-
+  if (isSentPersonalInfo && isSentDefaultEducationalInfo) {
     return (
       <div className="resume-container">
         <div className="personal-data-container">
@@ -28,9 +28,22 @@ export default function Resume({
             </div>
           </div>
         </div>
+        <div className="default-ed-info">
+          <h2>Educational Experience</h2>
+
+          <div className="default-ed-data">
+            <h3>Date: {defaultEducationalData.date}</h3>
+            <h3>School: {defaultEducationalData.school}</h3>
+            <h3>Title: {defaultEducationalData.studyTitle}</h3>
+          </div>
+        </div>
       </div>
     );
   } else {
-    return <small>There is no personal information yet.*</small>;
+    return (
+      <div className="resume-container">
+        <small>There is no information yet.*</small>
+      </div>
+    );
   }
 }

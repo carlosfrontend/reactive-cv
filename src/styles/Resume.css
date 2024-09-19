@@ -6,13 +6,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    gap:1em;
 }
 
 .img-container{
     display: flex;
     justify-content: start;
-    padding: 1em;
 }
 
 .profile-img{
