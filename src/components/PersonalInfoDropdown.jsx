@@ -95,6 +95,7 @@ export default function PersonalInfoDropDown({
             <label htmlFor="phone">
               Phone Number: <abbr title="required">*</abbr>
             </label>
+              <small> Format: 123-456-789</small>
             <input
               type="tel"
               name="phone"

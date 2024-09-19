@@ -31,6 +31,10 @@ export default function Resume({
       </div>
     );
   } else {
-    return <small>There is no personal information yet.*</small>;
+    return (
+        <div className="resume-container">
+            <small>There is no personal information yet.*</small>
+        </div>
+    )
   }
 }

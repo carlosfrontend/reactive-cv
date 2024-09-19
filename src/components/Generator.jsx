@@ -3,6 +3,7 @@ import "../styles/Generator.css";
 import PersonalInfoDropDown from "./PersonalInfoDropdown";
 import Resume from "./Resume";
 import profilePlaceholder from '../assets/profile_placeholder.svg';
+import EducationalInfoDropdown from "./EducationalInfoDropdown";
 
 export default function Generator() {
   
@@ -50,6 +51,7 @@ export default function Generator() {
         isSentPersonalInfo={isSentPersonalInfo}
         handleEditPersonalInfo={handleEditPersonalInfo}
       />
+      <EducationalInfoDropdown  title="Educational Data"/>
       <Resume profileImgUrl={profileImgUrl} personalData={personalData} isSentPersonalInfo={isSentPersonalInfo} />
     </div>
   );
