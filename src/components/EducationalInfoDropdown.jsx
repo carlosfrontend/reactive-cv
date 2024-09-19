@@ -49,7 +49,7 @@ export default function EducationalInfoDropdown({
                 name="school"
                 id="school"
                 placeholder="School name here"
-                value={defaultEducationalData.schoolName}
+                value={defaultEducationalData.school}
                 onChange={onChange}
                 disabled={isSentDefaultEducationalInfo}
                 required
@@ -78,7 +78,7 @@ export default function EducationalInfoDropdown({
                 type="date"
                 name="date"
                 id="date"
-                value={defaultEducationalData.studyDate}
+                value={defaultEducationalData.date}
                 onChange={onChange}
                 disabled={isSentDefaultEducationalInfo}
                 required
