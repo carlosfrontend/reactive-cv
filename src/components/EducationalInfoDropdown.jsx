@@ -52,6 +52,7 @@ export default function EducationalInfoDropdown({
                 value={defaultEducationalData.schoolName}
                 onChange={onChange}
                 disabled={isSentDefaultEducationalInfo}
+                required
               />
             </div>
             <div className="form-group">
@@ -66,6 +67,7 @@ export default function EducationalInfoDropdown({
                 value={defaultEducationalData.studyTitle}
                 onChange={onChange}
                 disabled={isSentDefaultEducationalInfo}
+                required
               />
             </div>
             <div className="form-group">
@@ -79,6 +81,7 @@ export default function EducationalInfoDropdown({
                 value={defaultEducationalData.studyDate}
                 onChange={onChange}
                 disabled={isSentDefaultEducationalInfo}
+                required
               />
             </div>
             <div className="button-group">
