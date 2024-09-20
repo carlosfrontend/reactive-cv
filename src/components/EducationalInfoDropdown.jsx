@@ -12,13 +12,30 @@ export default function EducationalInfoDropdown({
   onChange,
   handleSubmitDefaultEducationalInfo,
   handleEditDefaultEducationalInfo,
-  isSentDefaultEducationalInfo
+  isSentDefaultEducationalInfo,
 }) {
+  const [educationalData, setEducationalData] = useState({
+    id: 0,
+    school: "",
+    studyTitle: "",
+    date: "",
+  });
+
+  const [educationalForms, setEducationalForms] = useState([]);
   const [isActive, setIsActive] = useState(false);
 
   function handleNavChange() {
     setIsActive(!isActive);
   }
+
+  function handleAddEducationalForms() {
+    setEducationalForms([...educationalForms, educationalData]);
+    setEducationalData((prev) => ({
+      ...prev,
+      id: prev.id + 1,
+    }));
+  }
+
   return (
     <section className="educational-container">
       <nav onClick={handleNavChange} className="navbar">
@@ -35,7 +52,7 @@ export default function EducationalInfoDropdown({
       {isActive && (
         <>
           <div className="button-container">
-            <button className="add-btn">
+            <button className="add-btn" onClick={handleAddEducationalForms}>
               <img src={plusLogo} />
             </button>
           </div>
@@ -85,16 +102,74 @@ export default function EducationalInfoDropdown({
               />
             </div>
             <div className="button-group">
-            <button onClick={handleEditDefaultEducationalInfo} className="edit">
-              <img src={editLogo} alt="edit logo" />
-              Edit
-            </button>
-            <button onSubmit={handleSubmitDefaultEducationalInfo} className="save">
-              <img src={saveLogo} alt="save logo" />
-              Save
-            </button>
-          </div>
+              <button
+                onClick={handleEditDefaultEducationalInfo}
+                className="edit"
+              >
+                <img src={editLogo} alt="edit logo" />
+                Edit
+              </button>
+              <button
+                onSubmit={handleSubmitDefaultEducationalInfo}
+                className="save"
+              >
+                <img src={saveLogo} alt="save logo" />
+                Save
+              </button>
+            </div>
           </form>
+          {educationalForms.map((form) => (
+            <form key={form.id} >
+              <div className="form-group">
+                <label htmlFor="school">
+                  School: <abbr title="required">*</abbr>
+                </label>
+                <input
+                  type="text"
+                  name="school"
+                  id="school"
+                  placeholder="School name here"
+                  value={form.school}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="studyTitle">
+                  Title: <abbr title="required">*</abbr>
+                </label>
+                <input
+                  type="text"
+                  name="studyTitle"
+                  id="studyTitle"
+                  placeholder="Title of study here"
+                  value={form.studyTitle}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="date">
+                  Date: <abbr title="required">*</abbr>
+                </label>
+                <input
+                  type="date"
+                  name="date"
+                  id="date"
+                  value={form.date}
+                  required
+                />
+              </div>
+              <div className="button-group">
+                <button className="edit">
+                  <img src={editLogo} alt="edit logo" />
+                  Edit
+                </button>
+                <button className="save">
+                  <img src={saveLogo} alt="save logo" />
+                  Save
+                </button>
+              </div>
+            </form>
+          ))}
         </>
       )}
     </section>
