@@ -12,7 +12,7 @@ export default function PersonalInfoDropDown({
   handleChangeProfileImage,
   handleSubmitPersonalInfo,
   isSentPersonalInfo,
-  handleEditPersonalInfo,
+  handleEditPersonalInfo
 }) {
   const [isActive, setIsActive] = useState(false);
 
@@ -35,11 +35,11 @@ export default function PersonalInfoDropDown({
       {isActive && (
         <form onSubmit={handleSubmitPersonalInfo}>
           <div className="form-group">
-            <label htmlFor="profile_pic">Choose you personal image</label>
+            <label htmlFor="profileImgUrl">Choose you personal image</label>
             <input
               type="file"
-              id="profile_pic"
-              name="profile_pic"
+              id="profileImgUrl"
+              name="profileImgUrl"
               accept=".jpg, .jpeg, .png"
               onChange={handleChangeProfileImage}
               disabled={isSentPersonalInfo}

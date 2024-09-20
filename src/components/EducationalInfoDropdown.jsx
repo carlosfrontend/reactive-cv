@@ -13,30 +13,17 @@ export default function EducationalInfoDropdown({
   handleSubmitDefaultEducationalInfo,
   handleEditDefaultEducationalInfo,
   isSentDefaultEducationalInfo,
+  educationalForms,
+  handleAddEducationalForms,
+  handleEducationalFormsChanges
 }) {
-  const [educationalData, setEducationalData] = useState({
-    id: 0,
-    school: "",
-    studyTitle: "",
-    date: "",
-  });
-
-  const [educationalForms, setEducationalForms] = useState([]);
   const [isActive, setIsActive] = useState(false);
 
   function handleNavChange() {
     setIsActive(!isActive);
   }
 
-  function handleAddEducationalForms() {
-    setEducationalForms([...educationalForms, educationalData]);
-    setEducationalData((prev) => ({
-      ...prev,
-      id: prev.id + 1,
-    }));
-  }
-
-  return (
+ return (
     <section className="educational-container">
       <nav onClick={handleNavChange} className="navbar">
         <div className="menu">
@@ -118,8 +105,8 @@ export default function EducationalInfoDropdown({
               </button>
             </div>
           </form>
-          {educationalForms.map((form) => (
-            <form key={form.id} >
+          {educationalForms?.map((form) => (
+            <form key={form.id}>
               <div className="form-group">
                 <label htmlFor="school">
                   School: <abbr title="required">*</abbr>
@@ -131,6 +118,7 @@ export default function EducationalInfoDropdown({
                   placeholder="School name here"
                   value={form.school}
                   required
+                  onChange={handleEducationalFormsChanges}
                 />
               </div>
               <div className="form-group">
@@ -144,6 +132,7 @@ export default function EducationalInfoDropdown({
                   placeholder="Title of study here"
                   value={form.studyTitle}
                   required
+                  onChange={handleEducationalFormsChanges}
                 />
               </div>
               <div className="form-group">
@@ -156,6 +145,7 @@ export default function EducationalInfoDropdown({
                   id="date"
                   value={form.date}
                   required
+                  onChange={handleEducationalFormsChanges}
                 />
               </div>
               <div className="button-group">

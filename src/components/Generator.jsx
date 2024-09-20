@@ -2,11 +2,11 @@ import { useState } from "react";
 import "../styles/Generator.css";
 import PersonalInfoDropDown from "./PersonalInfoDropdown";
 import Resume from "./Resume";
-import profilePlaceholder from "../assets/profile_placeholder.svg";
 import EducationalInfoDropdown from "./EducationalInfoDropdown";
 
 export default function Generator() {
-  const [profileImgUrl, setProfileImgUrl] = useState(profilePlaceholder);
+  const [isImageChanged, setIsImageChanged] = useState(false);
+  const [profileImgUrl, setProfileImgUrl] = useState();
   const [personalData, setPersonalData] = useState({
     firstName: "",
     lastName: "",
@@ -21,12 +21,44 @@ export default function Generator() {
     date: "",
   });
 
+  const [educationalData, setEducationalData] = useState({
+    id: 0,
+    school: "",
+    studyTitle: "",
+    date: "",
+  });
+
+  const [educationalForms, setEducationalForms] = useState([]);
+
   const [isSentPersonalInfo, setIsSentPersonalInfo] = useState(false);
+
   const [isSentDefaultEducationalInfo, setIsSentDefaultEducationalInfo] =
     useState(false);
 
+  function handleAddEducationalForms() {
+    setEducationalData((prev) => ({
+      ...prev,
+      id: prev.id + 1,
+    }));
+
+    setEducationalForms([
+      ...educationalForms,
+      {
+        id: educationalData.id,
+        school: educationalData.school,
+        studyTitle: educationalData.studyTitle,
+        date: educationalData.date,
+      }
+    ]);
+  }
+
+  function handleEducationalFormsChanges(e) {
+    
+  }
+
   function handleChangeProfileImage(e) {
     setProfileImgUrl(URL.createObjectURL(e.target.files[0]));
+    setIsImageChanged(true);
   }
 
   function handlePersonalDataChanges(e) {
@@ -35,6 +67,7 @@ export default function Generator() {
     setPersonalData((prev) => ({
       ...prev,
       [name]: value,
+      id: crypto.randomUUID(),
     }));
   }
 
@@ -84,6 +117,10 @@ export default function Generator() {
         handleSubmitDefaultEducationalInfo={handleSubmitDefaultEducationalInfo}
         handleEditDefaultEducationalInfo={handleEditDefaultEducationalInfo}
         isSentDefaultEducationalInfo={isSentDefaultEducationalInfo}
+        educationalData={educationalData}
+        educationalForms={educationalForms}
+        handleAddEducationalForms={handleAddEducationalForms}
+        handleEducationalFormsChanges={handleEducationalFormsChanges}
       />
       <Resume
         profileImgUrl={profileImgUrl}
@@ -91,6 +128,7 @@ export default function Generator() {
         defaultEducationalData={defaultEducationalData}
         isSentPersonalInfo={isSentPersonalInfo}
         isSentDefaultEducationalInfo={isSentDefaultEducationalInfo}
+        isImageChanged={isImageChanged}
       />
     </div>
   );

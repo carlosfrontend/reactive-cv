@@ -1,19 +1,22 @@
 import "../styles/Resume.css";
 import cellLogo from "../assets/cellphone.svg";
 import emailLogo from "../assets/email-outline.svg";
+import profilePlaceholder from "../assets/profile_placeholder.svg";
+
 export default function Resume({
   profileImgUrl,
   personalData,
   isSentPersonalInfo,
   defaultEducationalData,
   isSentDefaultEducationalInfo,
+  isImageChanged
 }) {
   if (isSentPersonalInfo && isSentDefaultEducationalInfo) {
     return (
       <div className="resume-container">
         <div className="personal-data-container">
           <div className="img-container">
-            <img className="profile-img" src={profileImgUrl} />
+            <img className="profile-img" src={isImageChanged ? profileImgUrl : profilePlaceholder} />
           </div>
           <div className="personal-info">
             <h1>{personalData.firstName + " " + personalData.lastName}</h1>
