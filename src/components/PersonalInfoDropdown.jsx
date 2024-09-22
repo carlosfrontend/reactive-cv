@@ -6,7 +6,7 @@ import editLogo from "../assets/invoice-text-edit-outline.svg";
 import saveLogo from "../assets/content-save-outline.svg";
 
 export default function PersonalInfoDropDown({
-  title,
+  text,
   personalData,
   onChange,
   handleChangeProfileImage,
@@ -24,7 +24,7 @@ export default function PersonalInfoDropDown({
     <section className="personal-container">
       <nav onClick={handleNavChange} className="navbar">
         <div className="menu">
-          {!isActive ? "Show" : "Hide"} {title}
+          {!isActive ? "Show" + " " + text : "Hide" + " " + text}
         </div>
         <img
           className="dropdown-logo"

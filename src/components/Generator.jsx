@@ -48,12 +48,8 @@ export default function Generator() {
         school: educationalData.school,
         studyTitle: educationalData.studyTitle,
         date: educationalData.date,
-      }
+      },
     ]);
-  }
-
-  function handleEducationalFormsChanges(e) {
-    
   }
 
   function handleChangeProfileImage(e) {
@@ -105,22 +101,22 @@ export default function Generator() {
         onChange={handlePersonalDataChanges}
         handleChangeProfileImage={handleChangeProfileImage}
         personalData={personalData}
-        title="Personal Data"
+        text="Personal Data"
         handleSubmitPersonalInfo={handleSubmitPersonalInfo}
         isSentPersonalInfo={isSentPersonalInfo}
         handleEditPersonalInfo={handleEditPersonalInfo}
       />
       <EducationalInfoDropdown
         defaultEducationalData={defaultEducationalData}
-        title="Educational Data"
+        text="Educational Data"
         onChange={handleDefaultEducationalChanges}
         handleSubmitDefaultEducationalInfo={handleSubmitDefaultEducationalInfo}
         handleEditDefaultEducationalInfo={handleEditDefaultEducationalInfo}
         isSentDefaultEducationalInfo={isSentDefaultEducationalInfo}
         educationalData={educationalData}
         educationalForms={educationalForms}
+        setEducationalForms={setEducationalForms}
         handleAddEducationalForms={handleAddEducationalForms}
-        handleEducationalFormsChanges={handleEducationalFormsChanges}
       />
       <Resume
         profileImgUrl={profileImgUrl}

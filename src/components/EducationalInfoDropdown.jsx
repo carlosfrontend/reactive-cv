@@ -7,15 +7,16 @@ import editLogo from "../assets/invoice-text-edit-outline.svg";
 import saveLogo from "../assets/content-save-outline.svg";
 
 export default function EducationalInfoDropdown({
-  title,
+  text,
   defaultEducationalData,
   onChange,
   handleSubmitDefaultEducationalInfo,
   handleEditDefaultEducationalInfo,
   isSentDefaultEducationalInfo,
   educationalForms,
+  setEducationalForms,
   handleAddEducationalForms,
-  handleEducationalFormsChanges
+  fragmentKey,
 }) {
   const [isActive, setIsActive] = useState(false);
 
@@ -23,11 +24,11 @@ export default function EducationalInfoDropdown({
     setIsActive(!isActive);
   }
 
- return (
+  return (
     <section className="educational-container">
       <nav onClick={handleNavChange} className="navbar">
         <div className="menu">
-          {!isActive ? "Show" : "Hide"} {title}
+          {!isActive ? "Show" + " " + text : "Hide" + " " + text}
         </div>
         <img
           className="dropdown-logo"
@@ -42,6 +43,7 @@ export default function EducationalInfoDropdown({
             <button className="add-btn" onClick={handleAddEducationalForms}>
               <img src={plusLogo} />
             </button>
+            {fragmentKey}
           </div>
           <form onSubmit={handleSubmitDefaultEducationalInfo}>
             <div className="form-group">
@@ -105,7 +107,7 @@ export default function EducationalInfoDropdown({
               </button>
             </div>
           </form>
-          {educationalForms?.map((form) => (
+          {educationalForms.map((form) => (
             <form key={form.id}>
               <div className="form-group">
                 <label htmlFor="school">
@@ -118,7 +120,22 @@ export default function EducationalInfoDropdown({
                   placeholder="School name here"
                   value={form.school}
                   required
-                  onChange={handleEducationalFormsChanges}
+                  onChange={(e) => {
+                    let newEducationalFormsCopy = [];
+                    newEducationalFormsCopy = [form];
+                    const obj = newEducationalFormsCopy.find(
+                      (el) => el.id === form.id
+                    );
+                    obj.school = e.target.value;
+                    obj.studyTitle = "";
+                    obj.date = "";
+                    newEducationalFormsCopy[form.id] = obj;
+                    console.log(obj);
+                    setEducationalForms(
+                      [...educationalForms],
+                      newEducationalFormsCopy
+                    );
+                  }}
                 />
               </div>
               <div className="form-group">
@@ -132,7 +149,22 @@ export default function EducationalInfoDropdown({
                   placeholder="Title of study here"
                   value={form.studyTitle}
                   required
-                  onChange={handleEducationalFormsChanges}
+                  onChange={(e) => {
+                    let newEducationalFormsCopy = [];
+                    newEducationalFormsCopy = [form];
+                    const obj = newEducationalFormsCopy.find(
+                      (el) => el.id === form.id
+                    );
+                    obj.school = form.school;
+                    obj.studyTitle = e.target.value;
+                    obj.date = "";
+                    newEducationalFormsCopy[form.id] = obj;
+                    console.log(obj);
+                    setEducationalForms(
+                      [...educationalForms],
+                      newEducationalFormsCopy
+                    );
+                  }}
                 />
               </div>
               <div className="form-group">
@@ -145,7 +177,22 @@ export default function EducationalInfoDropdown({
                   id="date"
                   value={form.date}
                   required
-                  onChange={handleEducationalFormsChanges}
+                  onChange={(e) => {
+                    let newEducationalFormsCopy = [];
+                    newEducationalFormsCopy = [form];
+                    const obj = newEducationalFormsCopy.find(
+                      (el) => el.id === form.id
+                    );
+                    obj.school = form.school;
+                    obj.studyTitle = form.studyTitle;
+                    obj.date = e.target.value;
+                    newEducationalFormsCopy[form.id] = obj;
+                    console.log(obj);
+                    setEducationalForms(
+                      [...educationalForms],
+                      newEducationalFormsCopy
+                    );
+                  }}
                 />
               </div>
               <div className="button-group">
