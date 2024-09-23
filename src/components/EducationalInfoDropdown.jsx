@@ -16,6 +16,8 @@ export default function EducationalInfoDropdown({
   educationalForms,
   handleAddEducationalForms,
   handleChangeEducationalForms,
+  handleSubmitEducationalForms,
+  handleEditEducationalForms,
 }) {
   const [isActive, setIsActive] = useState(false);
 
@@ -106,7 +108,10 @@ export default function EducationalInfoDropdown({
             </div>
           </form>
           {educationalForms.map((form) => (
-            <form key={form.id}>
+            <form
+              onSubmit={(e) => handleSubmitEducationalForms(e, form.id)}
+              key={form.id}
+            >
               <div className="form-group">
                 <label htmlFor="school">
                   School: <abbr title="required">*</abbr>
@@ -119,6 +124,11 @@ export default function EducationalInfoDropdown({
                   value={form.school}
                   required
                   onChange={(e) => handleChangeEducationalForms(e, form.id)}
+                  disabled={educationalForms.find((el) => {
+                    if (el.id === form.id) {
+                      return el.isSent;
+                    }
+                  })}
                 />
               </div>
               <div className="form-group">
@@ -133,6 +143,11 @@ export default function EducationalInfoDropdown({
                   value={form.studyTitle}
                   required
                   onChange={(e) => handleChangeEducationalForms(e, form.id)}
+                  disabled={educationalForms.find((el) => {
+                    if (el.id === form.id) {
+                      return el.isSent;
+                    }
+                  })}
                 />
               </div>
               <div className="form-group">
@@ -146,14 +161,25 @@ export default function EducationalInfoDropdown({
                   value={form.date}
                   required
                   onChange={(e) => handleChangeEducationalForms(e, form.id)}
+                  disabled={educationalForms.find((el) => {
+                    if (el.id === form.id) {
+                      return el.isSent;
+                    }
+                  })}
                 />
               </div>
               <div className="button-group">
-                <button className="edit">
+                <button
+                  onClick={(e) => handleEditEducationalForms(e, form.id)}
+                  className="edit"
+                >
                   <img src={editLogo} alt="edit logo" />
                   Edit
                 </button>
-                <button className="save">
+                <button
+                  onSubmit={(e) => handleSubmitEducationalForms(e, form.id)}
+                  className="save"
+                >
                   <img src={saveLogo} alt="save logo" />
                   Save
                 </button>

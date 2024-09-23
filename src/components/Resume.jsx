@@ -9,14 +9,23 @@ export default function Resume({
   isSentPersonalInfo,
   defaultEducationalData,
   isSentDefaultEducationalInfo,
-  isImageChanged
+  isImageChanged,
+  educationalForms,
 }) {
-  if (isSentPersonalInfo && isSentDefaultEducationalInfo) {
+  const allDataAreTrue = (current) => current.isSent === true;
+  if (
+    isSentPersonalInfo &&
+    isSentDefaultEducationalInfo &&
+    educationalForms.every(allDataAreTrue)
+  ) {
     return (
       <div className="resume-container">
         <div className="personal-data-container">
           <div className="img-container">
-            <img className="profile-img" src={isImageChanged ? profileImgUrl : profilePlaceholder} />
+            <img
+              className="profile-img"
+              src={isImageChanged ? profileImgUrl : profilePlaceholder}
+            />
           </div>
           <div className="personal-info">
             <h1>{personalData.firstName + " " + personalData.lastName}</h1>
@@ -39,6 +48,13 @@ export default function Resume({
             <h3>School: {defaultEducationalData.school}</h3>
             <h3>Title: {defaultEducationalData.studyTitle}</h3>
           </div>
+          {educationalForms.map((el, index) => (
+            <div key={index} className="ed-forms-data">
+              <h3>Date: {el.date}</h3>
+              <h3>School: {el.school}</h3>
+              <h3>Title: {el.studyTitle}</h3>
+            </div>
+          ))}
         </div>
       </div>
     );

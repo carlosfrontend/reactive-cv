@@ -48,6 +48,7 @@ export default function Generator() {
         school: educationalData.school,
         studyTitle: educationalData.studyTitle,
         date: educationalData.date,
+        isSent: false,
       },
     ]);
   }
@@ -107,6 +108,20 @@ export default function Generator() {
     setEducationalForms([...educationalForms], newArray[index]);
   }
 
+  function handleSubmitEducationalForms(e) {
+    e.preventDefault();
+    const educationalFormsCopy = educationalForms.slice();
+    educationalFormsCopy.map((el) => (el.isSent = true));
+    setEducationalForms([...educationalForms], educationalFormsCopy);
+  }
+
+  function handleEditEducationalForms(e,index) {
+    e.preventDefault();
+    const educationalFormsCopy = educationalForms.slice();
+    educationalFormsCopy[index]["isSent"] = false;
+    setEducationalForms([...educationalForms], educationalFormsCopy);
+  }
+
   return (
     <div className="generator-container">
       <PersonalInfoDropDown
@@ -129,6 +144,8 @@ export default function Generator() {
         educationalForms={educationalForms}
         handleAddEducationalForms={handleAddEducationalForms}
         handleChangeEducationalForms={handleChangeEducationalForms}
+        handleSubmitEducationalForms={handleSubmitEducationalForms}
+        handleEditEducationalForms={handleEditEducationalForms}
       />
       <Resume
         profileImgUrl={profileImgUrl}
@@ -137,6 +154,7 @@ export default function Generator() {
         isSentPersonalInfo={isSentPersonalInfo}
         isSentDefaultEducationalInfo={isSentDefaultEducationalInfo}
         isImageChanged={isImageChanged}
+        educationalForms={educationalForms}
       />
     </div>
   );
