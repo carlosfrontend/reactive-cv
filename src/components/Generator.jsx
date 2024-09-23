@@ -59,7 +59,6 @@ export default function Generator() {
 
   function handlePersonalDataChanges(e) {
     const { name, value } = e.target;
-
     setPersonalData((prev) => ({
       ...prev,
       [name]: value,
@@ -95,6 +94,19 @@ export default function Generator() {
     setIsSentDefaultEducationalInfo(false);
   }
 
+  function handleChangeEducationalForms(e, index) {
+    let newArray = educationalForms.slice();
+    const obj = newArray[index];
+    if (e.target.name === "school") {
+      obj.school = e.target.value;
+    } else if (e.target.name === "studyTitle") {
+      obj.studyTitle = e.target.value;
+    } else {
+      obj.date = e.target.value;
+    }
+    setEducationalForms([...educationalForms], newArray[index]);
+  }
+
   return (
     <div className="generator-container">
       <PersonalInfoDropDown
@@ -115,8 +127,8 @@ export default function Generator() {
         isSentDefaultEducationalInfo={isSentDefaultEducationalInfo}
         educationalData={educationalData}
         educationalForms={educationalForms}
-        setEducationalForms={setEducationalForms}
         handleAddEducationalForms={handleAddEducationalForms}
+        handleChangeEducationalForms={handleChangeEducationalForms}
       />
       <Resume
         profileImgUrl={profileImgUrl}
