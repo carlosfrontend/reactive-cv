@@ -3,6 +3,7 @@ import "../styles/Generator.css";
 import PersonalInfoDropDown from "./PersonalInfoDropdown";
 import Resume from "./Resume";
 import EducationalInfoDropdown from "./EducationalInfoDropdown";
+import PracticalExperienceDropDown from "./PracticalExperienceDropDown";
 
 export default function Generator() {
   const [isImageChanged, setIsImageChanged] = useState(false);
@@ -20,6 +21,11 @@ export default function Generator() {
     studyTitle: "",
     date: "",
   });
+  const [defaultPracticalData, setDefaultPracticalData] = useState({
+    companyName: "",
+    positionTitle: "",
+    date: "",
+  });
 
   const [educationalData, setEducationalData] = useState({
     id: 0,
@@ -28,11 +34,22 @@ export default function Generator() {
     date: "",
   });
 
+  const [practicalData, setPracticalData] = useState({
+    id: 0,
+    companyName: "",
+    positionTitle: "",
+    date: "",
+  });
+
   const [educationalForms, setEducationalForms] = useState([]);
+
+  const [practicalForms, setPracticalForms] = useState([]);
 
   const [isSentPersonalInfo, setIsSentPersonalInfo] = useState(false);
 
   const [isSentDefaultEducationalInfo, setIsSentDefaultEducationalInfo] =
+    useState(false);
+  const [isSentDefaultPracticalData, setIsSentDefaultPracticalData] =
     useState(false);
 
   function handleAddEducationalForms() {
@@ -48,6 +65,24 @@ export default function Generator() {
         school: educationalData.school,
         studyTitle: educationalData.studyTitle,
         date: educationalData.date,
+        isSent: false,
+      },
+    ]);
+  }
+
+  function handleAddPracticalForms() {
+    setPracticalData((prev) => ({
+      ...prev,
+      id: prev.id + 1,
+    }));
+
+    setPracticalForms([
+      ...practicalForms,
+      {
+        id: practicalData.id,
+        companyName: practicalData.companyName,
+        positionTitle: practicalData.positionTitle,
+        date: practicalData.date,
         isSent: false,
       },
     ]);
@@ -85,14 +120,32 @@ export default function Generator() {
     }));
   }
 
+  function handleDefaultPracticalChanges(e) {
+    const { name, value } = e.target;
+    setDefaultPracticalData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  }
+
   function handleSubmitDefaultEducationalInfo(e) {
     e.preventDefault();
     setIsSentDefaultEducationalInfo(true);
   }
 
+  function handleSubmitDefaultPracticalData(e) {
+    e.preventDefault();
+    setIsSentDefaultPracticalData(true);
+  }
+
   function handleEditDefaultEducationalInfo(e) {
     e.preventDefault();
     setIsSentDefaultEducationalInfo(false);
+  }
+
+  function handleEditDefaultPracticalData(e) {
+    e.preventDefault();
+    setIsSentDefaultPracticalData(false);
   }
 
   function handleChangeEducationalForms(e, index) {
@@ -107,6 +160,19 @@ export default function Generator() {
     }
     setEducationalForms([...educationalForms], newArray[index]);
   }
+  // stop
+  function handleChangePracticalForms(e, index) {
+    let newArray = practicalForms.slice();
+    const obj = newArray[index];
+    if (e.target.name === "companyName") {
+      obj.companyName = e.target.value;
+    } else if (e.target.name === "positionTitle") {
+      obj.positionTitle = e.target.value;
+    } else {
+      obj.date = e.target.value;
+    }
+    setPracticalForms([...practicalForms], newArray[index]);
+  }
 
   function handleSubmitEducationalForms(e) {
     e.preventDefault();
@@ -115,11 +181,25 @@ export default function Generator() {
     setEducationalForms([...educationalForms], educationalFormsCopy);
   }
 
-  function handleEditEducationalForms(e,index) {
+  function handleSubmitPracticalForms(e) {
+    e.preventDefault();
+    const practicalFormsCopy = practicalForms.slice();
+    practicalFormsCopy.map((el) => (el.isSent = true));
+    setPracticalForms([...practicalForms], practicalFormsCopy);
+  }
+
+  function handleEditEducationalForms(e, index) {
     e.preventDefault();
     const educationalFormsCopy = educationalForms.slice();
     educationalFormsCopy[index]["isSent"] = false;
     setEducationalForms([...educationalForms], educationalFormsCopy);
+  }
+
+  function handleEditPracticalForms(e, index) {
+    e.preventDefault();
+    const practicalFormsCopy = practicalForms.slice();
+    practicalFormsCopy[index]["isSent"] = false;
+    setPracticalForms([...practicalForms], practicalFormsCopy);
   }
 
   return (
@@ -147,14 +227,30 @@ export default function Generator() {
         handleSubmitEducationalForms={handleSubmitEducationalForms}
         handleEditEducationalForms={handleEditEducationalForms}
       />
+      <PracticalExperienceDropDown
+        text="Practical Data"
+        defaultPracticalData={defaultPracticalData}
+        onChange={handleDefaultPracticalChanges}
+        handleSubmitDefaultPracticalData={handleSubmitDefaultPracticalData}
+        handleEditDefaultPracticalData={handleEditDefaultPracticalData}
+        isSentDefaultPracticalData={isSentDefaultPracticalData}
+        practicalForms={practicalForms}
+        handleAddPracticalForms={handleAddPracticalForms}
+        handleChangePracticalForms={handleChangePracticalForms}
+        handleSubmitPracticalForms={handleSubmitPracticalForms}
+        handleEditPracticalForms={handleEditPracticalForms}
+      />
       <Resume
         profileImgUrl={profileImgUrl}
         personalData={personalData}
         defaultEducationalData={defaultEducationalData}
         isSentPersonalInfo={isSentPersonalInfo}
         isSentDefaultEducationalInfo={isSentDefaultEducationalInfo}
+        isSentDefaultPracticalData={isSentDefaultPracticalData}
         isImageChanged={isImageChanged}
         educationalForms={educationalForms}
+        practicalForms={practicalForms}
+        defaultPracticalData={defaultPracticalData}
       />
     </div>
   );

@@ -11,12 +11,17 @@ export default function Resume({
   isSentDefaultEducationalInfo,
   isImageChanged,
   educationalForms,
+  practicalForms,
+  defaultPracticalData,
+  isSentDefaultPracticalData
 }) {
   const allDataAreTrue = (current) => current.isSent === true;
   if (
     isSentPersonalInfo &&
     isSentDefaultEducationalInfo &&
-    educationalForms.every(allDataAreTrue)
+    isSentDefaultPracticalData &&
+    educationalForms.every(allDataAreTrue) &&
+    practicalForms.every(allDataAreTrue)
   ) {
     return (
       <div className="resume-container">
@@ -53,6 +58,22 @@ export default function Resume({
               <h3>Date: {el.date}</h3>
               <h3>School: {el.school}</h3>
               <h3>Title: {el.studyTitle}</h3>
+            </div>
+          ))}
+        </div>
+        <div className="default-pr-info">
+          <h2>Practical Experience</h2>
+
+          <div className="default-pr-data">
+            <h3>Date: {defaultPracticalData.date}</h3>
+            <h3>Position Title: {defaultPracticalData.positionTitle}</h3>
+            <h3>Company Name: {defaultPracticalData.companyName}</h3>
+          </div>
+          {practicalForms.map((el, index) => (
+            <div key={index} className="pr-forms-data">
+              <h3>Date: {el.date}</h3>
+              <h3>Position Title: {el.positionTitle}</h3>
+              <h3>Company Name: {el.companyName}</h3>
             </div>
           ))}
         </div>
