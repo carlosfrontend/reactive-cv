@@ -1,7 +1,7 @@
 import "../styles/Resume.css";
 import cellLogo from "../assets/cellphone.svg";
 import emailLogo from "../assets/email-outline.svg";
-import profilePlaceholder from "../assets/profile_placeholder.svg";
+import profilePlaceholder from "../assets/Portrait_Placeholder.png";
 
 export default function Resume({
   profileImgUrl,
@@ -13,7 +13,7 @@ export default function Resume({
   educationalForms,
   practicalForms,
   defaultPracticalData,
-  isSentDefaultPracticalData
+  isSentDefaultPracticalData,
 }) {
   const allDataAreTrue = (current) => current.isSent === true;
   if (
@@ -65,15 +65,21 @@ export default function Resume({
           <h2>Practical Experience</h2>
 
           <div className="default-pr-data">
-            <h3>Date: {defaultPracticalData.date}</h3>
+            <h3>Start Date: {defaultPracticalData.startDate}</h3>
+            <h3>End Date: {defaultPracticalData.endDate}</h3>
             <h3>Position Title: {defaultPracticalData.positionTitle}</h3>
             <h3>Company Name: {defaultPracticalData.companyName}</h3>
+            <h3>Main responsibilities:</h3>
+            <p>{defaultPracticalData.mainResponsibilities}</p>
           </div>
           {practicalForms.map((el, index) => (
             <div key={index} className="pr-forms-data">
-              <h3>Date: {el.date}</h3>
+              <h3>Start Date: {el.startDate}</h3>
+              <h3>End Date: {el.endDate}</h3>
               <h3>Position Title: {el.positionTitle}</h3>
               <h3>Company Name: {el.companyName}</h3>
+              <h3>Main responsibilities:</h3>
+              <p>{el.mainResponsibilities}</p>
             </div>
           ))}
         </div>

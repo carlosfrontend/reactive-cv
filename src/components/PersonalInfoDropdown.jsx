@@ -102,7 +102,6 @@ export default function PersonalInfoDropDown({
               type="tel"
               name="phone"
               id="phone"
-              autoComplete="on"
               pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"
               placeholder="Your phone number here"
               value={personalData.phone}

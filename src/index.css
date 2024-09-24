@@ -7,15 +7,16 @@
 }
 
 #root{
-    
     width: 100%;
+    min-height: 100vh;
 }
 
 html, body{
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
 }
 small{
     font-size: 1.1rem;
     font-weight: 500;
+    padding-bottom: .3em;
 }

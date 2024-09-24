@@ -32,7 +32,6 @@ input {
   font-size: 1.2rem;
   border-radius: 8px;
   outline: none;
-  border: none;
   margin-bottom: 1em;
   font-weight: 600;
   border: 1px solid #00b3fb;
@@ -45,6 +44,21 @@ input[type="file"] {
 }
 
 input:focus {
+  outline: 2px solid #00b3fb;
+}
+
+textarea{
+  padding: 0.2em 0.4em;
+  border: 1px solid #00b3fb;
+  width: 100%;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  outline: none;
+  margin-bottom: 1em;
+}
+
+textarea:focus{
   outline: 2px solid #00b3fb;
 }
 

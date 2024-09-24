@@ -4,10 +4,11 @@ import PersonalInfoDropDown from "./PersonalInfoDropdown";
 import Resume from "./Resume";
 import EducationalInfoDropdown from "./EducationalInfoDropdown";
 import PracticalExperienceDropDown from "./PracticalExperienceDropDown";
+import defaultImg from "../assets/Portrait_Placeholder.png";
 
 export default function Generator() {
   const [isImageChanged, setIsImageChanged] = useState(false);
-  const [profileImgUrl, setProfileImgUrl] = useState();
+  const [profileImgUrl, setProfileImgUrl] = useState(defaultImg);
   const [personalData, setPersonalData] = useState({
     firstName: "",
     lastName: "",
@@ -24,7 +25,9 @@ export default function Generator() {
   const [defaultPracticalData, setDefaultPracticalData] = useState({
     companyName: "",
     positionTitle: "",
-    date: "",
+    mainResponsibilities: "",
+    startDate: "",
+    endDate: "",
   });
 
   const [educationalData, setEducationalData] = useState({
@@ -38,7 +41,9 @@ export default function Generator() {
     id: 0,
     companyName: "",
     positionTitle: "",
-    date: "",
+    mainResponsibilities: "",
+    startDate: "",
+    endDate: "",
   });
 
   const [educationalForms, setEducationalForms] = useState([]);
@@ -82,7 +87,9 @@ export default function Generator() {
         id: practicalData.id,
         companyName: practicalData.companyName,
         positionTitle: practicalData.positionTitle,
-        date: practicalData.date,
+        mainResponsibilities: practicalData.mainResponsibilities,
+        startDate: practicalData.startDate,
+        endDate: practicalData.endDate,
         isSent: false,
       },
     ]);
@@ -160,7 +167,7 @@ export default function Generator() {
     }
     setEducationalForms([...educationalForms], newArray[index]);
   }
-  // stop
+
   function handleChangePracticalForms(e, index) {
     let newArray = practicalForms.slice();
     const obj = newArray[index];
@@ -168,8 +175,12 @@ export default function Generator() {
       obj.companyName = e.target.value;
     } else if (e.target.name === "positionTitle") {
       obj.positionTitle = e.target.value;
+    } else if (e.target.name === "mainResponsibilities") {
+      obj.mainResponsibilities = e.target.value;
+    } else if (e.target.name === "startDate") {
+      obj.startDate = e.target.value;
     } else {
-      obj.date = e.target.value;
+      obj.endDate = e.target.value;
     }
     setPracticalForms([...practicalForms], newArray[index]);
   }

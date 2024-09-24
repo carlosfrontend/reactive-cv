@@ -77,14 +77,46 @@ export default function PracticalExperienceDropDown({
               />
             </div>
             <div className="form-group">
-              <label htmlFor="date">
-                Date: <abbr title="required">*</abbr>
+              <label htmlFor="mainResponsibilities">
+                Main Responsibilities: <abbr title="required">*</abbr>{" "}
+              </label>
+              <small>Maximum of 160 characters</small>
+              <textarea
+                name="mainResponsibilities"
+                rows={10}
+                cols={50}
+                id="mainResponsibilities"
+                placeholder="Main responsibilities of your jobs here"
+                required
+                maxLength={160}
+                value={defaultPracticalData.mainResponsibilities}
+                onChange={onChange}
+                disabled={isSentDefaultPracticalData}
+              ></textarea>
+            </div>
+            <div className="form-group">
+              <label htmlFor="startDate">
+                Start Date: <abbr title="required">*</abbr>
               </label>
               <input
                 type="date"
-                name="date"
-                id="date"
-                value={defaultPracticalData.date}
+                name="startDate"
+                id="startDate"
+                value={defaultPracticalData.startDate}
+                onChange={onChange}
+                disabled={isSentDefaultPracticalData}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="endDate">
+                End Date: <abbr title="required">*</abbr>
+              </label>
+              <input
+                type="date"
+                name="endDate"
+                id="endDate"
+                value={defaultPracticalData.endDate}
                 onChange={onChange}
                 disabled={isSentDefaultPracticalData}
                 required
@@ -136,7 +168,7 @@ export default function PracticalExperienceDropDown({
                   type="text"
                   name="positionTitle"
                   id="positionTitle"
-                  placeholder="Title of study here"
+                  placeholder="Position title here"
                   value={form.positionTitle}
                   required
                   onChange={(e) => handleChangePracticalForms(e, form.id)}
@@ -148,21 +180,61 @@ export default function PracticalExperienceDropDown({
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="date">
-                  Date: <abbr title="required">*</abbr>
+                <label htmlFor="mainResponsibilities">
+                  Main Responsibilities: <abbr title="required">*</abbr>{" "}
                 </label>
-                <input
-                  type="date"
-                  name="date"
-                  id="date"
-                  value={form.date}
+                <small>Maximum of 160 characters</small>
+                <textarea
+                  name="mainResponsibilities"
+                  id="mainResponsibilities"
+                  rows={10}
+                  cols={50}
+                  placeholder="Main responsibilities of your jobs here"
                   required
+                  maxLength={160}
+                  value={form.mainResponsibilities}
                   onChange={(e) => handleChangePracticalForms(e, form.id)}
                   disabled={practicalForms.find((el) => {
                     if (el.id === form.id) {
                       return el.isSent;
                     }
                   })}
+                ></textarea>
+              </div>
+              <div className="form-group">
+                <label htmlFor="startDate">
+                  Start Date: <abbr title="required">*</abbr>
+                </label>
+                <input
+                  type="date"
+                  name="startDate"
+                  id="startDate"
+                  value={form.startDate}
+                  onChange={(e) => handleChangePracticalForms(e, form.id)}
+                  disabled={practicalForms.find((el) => {
+                    if (el.id === form.id) {
+                      return el.isSent;
+                    }
+                  })}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="endDate">
+                  End Date: <abbr title="required">*</abbr>
+                </label>
+                <input
+                  type="date"
+                  name="endDate"
+                  id="endDate"
+                  value={form.endDate}
+                  onChange={(e) => handleChangePracticalForms(e, form.id)}
+                  disabled={practicalForms.find((el) => {
+                    if (el.id === form.id) {
+                      return el.isSent;
+                    }
+                  })}
+                  required
                 />
               </div>
               <div className="button-group">
