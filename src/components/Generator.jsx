@@ -127,8 +127,7 @@ export default function Generator() {
     const { name, value } = e.target;
     const personalDataCopy = {
       ...personalData,
-      [name]: value,
-      id: crypto.randomUUID(),
+      [name]: value
     };
 
     setPersonalData(personalDataCopy);
