@@ -8,8 +8,9 @@ import defaultImg from "../assets/Portrait_Placeholder.png";
 
 export default function Generator() {
   const [isImageChanged, setIsImageChanged] = useState(false);
-  const [profileImgUrl, setProfileImgUrl] = useState(defaultImg);
+  const [profileImgUrl, setProfileImgUrl] = useState(null);
   const [personalData, setPersonalData] = useState({
+    imageUrl: profileImgUrl,
     firstName: "",
     lastName: "",
     email: "",
@@ -96,17 +97,41 @@ export default function Generator() {
   }
 
   function handleChangeProfileImage(e) {
-    setProfileImgUrl(URL.createObjectURL(e.target.files[0]));
-    setIsImageChanged(true);
+    const selectedImg = e.target.files[0];
+    if(e.target.files.length){
+
+      let imgCopyUrl = profileImgUrl;
+      console.log(imgCopyUrl);
+      imgCopyUrl = selectedImg;
+      setIsImageChanged(true);
+      const blob = URL.createObjectURL(imgCopyUrl)
+      console.log(blob)
+      setProfileImgUrl(blob);
+      setPersonalData({ ...personalData, imageUrl: imgCopyUrl });
+      console.log(imgCopyUrl === profileImgUrl);
+      console.log(profileImgUrl, imgCopyUrl);
+    }else{
+      let imgCopyUrl = profileImgUrl;
+      console.log(imgCopyUrl);
+      setIsImageChanged(false);
+      const blob = defaultImg.src;
+      console.log(blob)
+      setProfileImgUrl(blob);
+      setPersonalData({ ...personalData, imageUrl: imgCopyUrl });
+      console.log(imgCopyUrl === profileImgUrl);
+      console.log(profileImgUrl, imgCopyUrl);
+    }
   }
 
   function handlePersonalDataChanges(e) {
     const { name, value } = e.target;
-    setPersonalData((prev) => ({
-      ...prev,
+    const personalDataCopy = {
+      ...personalData,
       [name]: value,
       id: crypto.randomUUID(),
-    }));
+    };
+
+    setPersonalData(personalDataCopy);
   }
 
   function handleSubmitPersonalInfo(e) {
@@ -185,32 +210,36 @@ export default function Generator() {
     setPracticalForms([...practicalForms], newArray[index]);
   }
 
-  function handleSubmitEducationalForms(e) {
+  function handleSubmitEducationalForms(e, index) {
     e.preventDefault();
     const educationalFormsCopy = educationalForms.slice();
-    educationalFormsCopy.map((el) => (el.isSent = true));
-    setEducationalForms([...educationalForms], educationalFormsCopy);
+    educationalFormsCopy[index].isSent = true;
+    educationalFormsCopy[index] = [...educationalFormsCopy][index];
+    setEducationalForms(educationalFormsCopy);
   }
 
-  function handleSubmitPracticalForms(e) {
+  function handleSubmitPracticalForms(e, index) {
     e.preventDefault();
     const practicalFormsCopy = practicalForms.slice();
-    practicalFormsCopy.map((el) => (el.isSent = true));
-    setPracticalForms([...practicalForms], practicalFormsCopy);
+    practicalFormsCopy[index].isSent = true;
+    practicalFormsCopy[index] = [...practicalFormsCopy][index];
+    setEducationalForms(practicalFormsCopy);
   }
 
   function handleEditEducationalForms(e, index) {
     e.preventDefault();
     const educationalFormsCopy = educationalForms.slice();
-    educationalFormsCopy[index]["isSent"] = false;
-    setEducationalForms([...educationalForms], educationalFormsCopy);
+    educationalFormsCopy[index].isSent = false;
+    educationalFormsCopy[index] = [...educationalFormsCopy][index];
+    setEducationalForms(educationalFormsCopy);
   }
 
   function handleEditPracticalForms(e, index) {
     e.preventDefault();
     const practicalFormsCopy = practicalForms.slice();
-    practicalFormsCopy[index]["isSent"] = false;
-    setPracticalForms([...practicalForms], practicalFormsCopy);
+    practicalFormsCopy[index].isSent = false;
+    practicalFormsCopy[index] = [...practicalFormsCopy][index];
+    setPracticalForms(practicalFormsCopy);
   }
 
   return (

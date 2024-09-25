@@ -41,7 +41,7 @@ export default function PersonalInfoDropDown({
               id="profileImgUrl"
               name="profileImgUrl"
               accept=".jpg, .jpeg, .png"
-              onChange={handleChangeProfileImage}
+              onChange={(handleChangeProfileImage)}
               disabled={isSentPersonalInfo}
             />
           </div>
@@ -57,7 +57,7 @@ export default function PersonalInfoDropDown({
               autoComplete="given-name"
               placeholder="Your name here"
               value={personalData.firstName}
-              onChange={onChange}
+              onChange={(e) => onChange(e)}
               disabled={isSentPersonalInfo}
             />
           </div>
@@ -73,7 +73,7 @@ export default function PersonalInfoDropDown({
               autoComplete="family-name"
               placeholder="Your last name here"
               value={personalData.lastName}
-              onChange={onChange}
+              onChange={(e) => onChange(e)}
               disabled={isSentPersonalInfo}
             />
           </div>
@@ -89,7 +89,7 @@ export default function PersonalInfoDropDown({
               autoComplete="on"
               placeholder="Your email here"
               value={personalData.email}
-              onChange={onChange}
+              onChange={(e) => onChange(e)}
               disabled={isSentPersonalInfo}
             />
           </div>
@@ -105,7 +105,7 @@ export default function PersonalInfoDropDown({
               pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"
               placeholder="Your phone number here"
               value={personalData.phone}
-              onChange={onChange}
+              onChange={(e) => onChange(e)}
               disabled={isSentPersonalInfo}
             />
           </div>
