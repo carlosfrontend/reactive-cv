@@ -14,7 +14,7 @@ function App() {
     <>
       <WelcomePage setIsVisited={setIsVisited}>
         <p className="welcome-message">
-          <span>CV Resume</span> is a simple, light and <i>fast</i> APP for
+          <span>Reactive CV</span> is a simple, light and <i>fast</i> APP for
           create you professional resume.
         </p>
       </WelcomePage>
