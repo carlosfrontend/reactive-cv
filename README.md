@@ -9,6 +9,6 @@ Links:
 
 :white_check_mark: [Assignments](https://www.theodinproject.com/lessons/node-path-react-new-cv-application#assignment) :blue_book:
 
-:white_check_mark: [Live Preview](#) :computer:
+:white_check_mark: [Live Preview](https://reactivecv.netlify.app/) :computer:
 
 Happy Coding!! :coffee: :rocket:
