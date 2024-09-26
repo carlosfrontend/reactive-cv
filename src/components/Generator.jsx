@@ -5,6 +5,8 @@ import Resume from "./Resume";
 import EducationalInfoDropdown from "./EducationalInfoDropdown";
 import PracticalExperienceDropDown from "./PracticalExperienceDropDown";
 import defaultImg from "../assets/Portrait_Placeholder.png";
+import Header from "./Header";
+import Footer from "./Footer";
 
 export default function Generator() {
   const [isImageChanged, setIsImageChanged] = useState(false);
@@ -98,24 +100,19 @@ export default function Generator() {
 
   function handleChangeProfileImage(e) {
     const selectedImg = e.target.files[0];
-    if(e.target.files.length){
-
+    if (e.target.files.length) {
       let imgCopyUrl = profileImgUrl;
-      console.log(imgCopyUrl);
       imgCopyUrl = selectedImg;
       setIsImageChanged(true);
-      const blob = URL.createObjectURL(imgCopyUrl)
-      console.log(blob)
+      const blob = URL.createObjectURL(imgCopyUrl);
       setProfileImgUrl(blob);
       setPersonalData({ ...personalData, imageUrl: imgCopyUrl });
-      console.log(imgCopyUrl === profileImgUrl);
-      console.log(profileImgUrl, imgCopyUrl);
-    }else{
+    } else {
       let imgCopyUrl = profileImgUrl;
       console.log(imgCopyUrl);
       setIsImageChanged(false);
       const blob = defaultImg.src;
-      console.log(blob)
+      console.log(blob);
       setProfileImgUrl(blob);
       setPersonalData({ ...personalData, imageUrl: imgCopyUrl });
       console.log(imgCopyUrl === profileImgUrl);
@@ -127,7 +124,7 @@ export default function Generator() {
     const { name, value } = e.target;
     const personalDataCopy = {
       ...personalData,
-      [name]: value
+      [name]: value,
     };
 
     setPersonalData(personalDataCopy);
@@ -242,55 +239,62 @@ export default function Generator() {
   }
 
   return (
-    <div className="generator-container">
-      <PersonalInfoDropDown
-        onChange={handlePersonalDataChanges}
-        handleChangeProfileImage={handleChangeProfileImage}
-        personalData={personalData}
-        text="Personal Data"
-        handleSubmitPersonalInfo={handleSubmitPersonalInfo}
-        isSentPersonalInfo={isSentPersonalInfo}
-        handleEditPersonalInfo={handleEditPersonalInfo}
-      />
-      <EducationalInfoDropdown
-        defaultEducationalData={defaultEducationalData}
-        text="Educational Data"
-        onChange={handleDefaultEducationalChanges}
-        handleSubmitDefaultEducationalInfo={handleSubmitDefaultEducationalInfo}
-        handleEditDefaultEducationalInfo={handleEditDefaultEducationalInfo}
-        isSentDefaultEducationalInfo={isSentDefaultEducationalInfo}
-        educationalData={educationalData}
-        educationalForms={educationalForms}
-        handleAddEducationalForms={handleAddEducationalForms}
-        handleChangeEducationalForms={handleChangeEducationalForms}
-        handleSubmitEducationalForms={handleSubmitEducationalForms}
-        handleEditEducationalForms={handleEditEducationalForms}
-      />
-      <PracticalExperienceDropDown
-        text="Practical Data"
-        defaultPracticalData={defaultPracticalData}
-        onChange={handleDefaultPracticalChanges}
-        handleSubmitDefaultPracticalData={handleSubmitDefaultPracticalData}
-        handleEditDefaultPracticalData={handleEditDefaultPracticalData}
-        isSentDefaultPracticalData={isSentDefaultPracticalData}
-        practicalForms={practicalForms}
-        handleAddPracticalForms={handleAddPracticalForms}
-        handleChangePracticalForms={handleChangePracticalForms}
-        handleSubmitPracticalForms={handleSubmitPracticalForms}
-        handleEditPracticalForms={handleEditPracticalForms}
-      />
-      <Resume
-        profileImgUrl={profileImgUrl}
-        personalData={personalData}
-        defaultEducationalData={defaultEducationalData}
-        isSentPersonalInfo={isSentPersonalInfo}
-        isSentDefaultEducationalInfo={isSentDefaultEducationalInfo}
-        isSentDefaultPracticalData={isSentDefaultPracticalData}
-        isImageChanged={isImageChanged}
-        educationalForms={educationalForms}
-        practicalForms={practicalForms}
-        defaultPracticalData={defaultPracticalData}
-      />
-    </div>
+    <>
+      <div className="generator-container">
+        <Header></Header>
+        <PersonalInfoDropDown
+          onChange={handlePersonalDataChanges}
+          handleChangeProfileImage={handleChangeProfileImage}
+          personalData={personalData}
+          text="Personal Data"
+          handleSubmitPersonalInfo={handleSubmitPersonalInfo}
+          isSentPersonalInfo={isSentPersonalInfo}
+          handleEditPersonalInfo={handleEditPersonalInfo}
+        />
+        <EducationalInfoDropdown
+          defaultEducationalData={defaultEducationalData}
+          text="Educational Data"
+          onChange={handleDefaultEducationalChanges}
+          handleSubmitDefaultEducationalInfo={
+            handleSubmitDefaultEducationalInfo
+          }
+          handleEditDefaultEducationalInfo={handleEditDefaultEducationalInfo}
+          isSentDefaultEducationalInfo={isSentDefaultEducationalInfo}
+          educationalData={educationalData}
+          educationalForms={educationalForms}
+          handleAddEducationalForms={handleAddEducationalForms}
+          handleChangeEducationalForms={handleChangeEducationalForms}
+          handleSubmitEducationalForms={handleSubmitEducationalForms}
+          handleEditEducationalForms={handleEditEducationalForms}
+        />
+        <PracticalExperienceDropDown
+          text="Practical Data"
+          defaultPracticalData={defaultPracticalData}
+          onChange={handleDefaultPracticalChanges}
+          handleSubmitDefaultPracticalData={handleSubmitDefaultPracticalData}
+          handleEditDefaultPracticalData={handleEditDefaultPracticalData}
+          isSentDefaultPracticalData={isSentDefaultPracticalData}
+          practicalForms={practicalForms}
+          handleAddPracticalForms={handleAddPracticalForms}
+          handleChangePracticalForms={handleChangePracticalForms}
+          handleSubmitPracticalForms={handleSubmitPracticalForms}
+          handleEditPracticalForms={handleEditPracticalForms}
+        />
+
+        <Resume
+          profileImgUrl={profileImgUrl}
+          personalData={personalData}
+          defaultEducationalData={defaultEducationalData}
+          isSentPersonalInfo={isSentPersonalInfo}
+          isSentDefaultEducationalInfo={isSentDefaultEducationalInfo}
+          isSentDefaultPracticalData={isSentDefaultPracticalData}
+          isImageChanged={isImageChanged}
+          educationalForms={educationalForms}
+          practicalForms={practicalForms}
+          defaultPracticalData={defaultPracticalData}
+        />
+      </div>
+      <Footer />
+    </>
   );
 }

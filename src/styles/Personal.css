@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #dedf1a;
+  background-color: #6985ad;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8,8 +8,15 @@
   font-weight: 600;
   cursor: pointer;
   border-bottom: 1px solid #000000;
+  cursor: pointer;
+  transition: all .3s ease-out;
 }
 
+.navbar:hover {
+  background-color: #1c9ae9;
+  color: #ffffff;
+  
+}
 .dropdown-logo {
   width: 2em;
 }
@@ -17,6 +24,22 @@
 form {
   padding: 1em;
   border-bottom: 1px solid #00b3fb;
+  animation: expand 700ms ease-in-out;
+  transform-origin: top;
+}
+
+@keyframes expand {
+  0% {
+    transform: scaleY(0);
+  }
+
+  70% {
+    transform: scaleY(1.1);
+  }
+  
+  100% {
+    transform: scaleY(1);
+  }
 }
 
 label {
@@ -94,4 +117,22 @@ textarea:focus{
 
 .button-group button:hover {
   outline: 2px solid #00b3fb;
+}
+
+@media (min-width: 768px){
+  
+ .navbar{
+  font-size: 1.6rem;
+ }
+
+ label {
+  font-size: 1.4rem;
+ 
+}
+
+input {
+ 
+  font-size: 1.4rem;
+  
+}
 }

@@ -1,0 +1,50 @@
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #070505cf;
+}
+
+.footer-link {
+  text-decoration: none;
+  padding: 0.5em;
+  font-size: 2.4rem;
+  transform: scale(1);
+  transition: 0.1s ease-out;
+}
+.footer-link:hover {
+  text-decoration: none;
+  padding: 0.5em;
+  font-size: 2.4rem;
+  transform: scale(1.4);
+}
+
+i {
+  cursor: pointer;
+}
+
+.devicon-githubcodespaces-plain:before {
+  color: #a6e98b;
+  transition: all 0.5s ease-in-out;
+}
+
+.devicon-linkedin-plain:before {
+  color: #5b9dda;
+}
+
+.devicon-twitter-original:before {
+  color: #a6aec3;
+}
+
+.devicon-githubcodespaces-plain:hover::before {
+  color: #48ff00;
+}
+
+.devicon-linkedin-plain:hover:before {
+  color: #0f77d9;
+}
+
+.devicon-twitter-original:hover:before {
+  color: #ffffff;
+}

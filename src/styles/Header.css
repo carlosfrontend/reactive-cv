@@ -1,0 +1,25 @@
+.header{
+background-color: #070505cf;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.header img {
+    width: 10em;
+    height: 10em;
+}
+
+@media (min-width: 768px){
+  
+    .header img {
+        width: 14em;
+        height: 14em;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .header img {
+        width: 20em;
+        height: 20em;
+    }
+  }

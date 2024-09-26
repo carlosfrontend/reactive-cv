@@ -107,6 +107,7 @@ export default function PersonalInfoDropDown({
               value={personalData.phone}
               onChange={(e) => onChange(e)}
               disabled={isSentPersonalInfo}
+              autoComplete="on"
             />
           </div>
           <div className="form-group">

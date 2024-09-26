@@ -1,6 +1,6 @@
 import "../styles/Resume.css";
-import cellLogo from "../assets/cellphone.svg";
-import emailLogo from "../assets/email-outline.svg";
+import cellLogo from "../assets/cellphone.png";
+import emailLogo from "../assets/email-outline.png";
 import profilePlaceholder from "../assets/Portrait_Placeholder.png";
 
 export default function Resume({
@@ -24,7 +24,7 @@ export default function Resume({
     practicalForms.every(allDataAreTrue)
   ) {
     return (
-      <div className="resume-container">
+      <div id="resume-container">
         <div className="personal-data-container">
           <div className="img-container">
             <img
@@ -70,7 +70,9 @@ export default function Resume({
             <h3>Position Title: {defaultPracticalData.positionTitle}</h3>
             <h3>Company Name: {defaultPracticalData.companyName}</h3>
             <h3>Main responsibilities:</h3>
-            <p>{defaultPracticalData.mainResponsibilities}</p>
+            <div className="main-responsibilities">
+              <p>{defaultPracticalData.mainResponsibilities}</p>
+            </div>
           </div>
           {practicalForms.map((el, index) => (
             <div key={index} className="pr-forms-data">
@@ -79,7 +81,9 @@ export default function Resume({
               <h3>Position Title: {el.positionTitle}</h3>
               <h3>Company Name: {el.companyName}</h3>
               <h3>Main responsibilities:</h3>
-              <p>{el.mainResponsibilities}</p>
+              <div className="main-responsibilities">
+                <p>{el.mainResponsibilities}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -88,7 +92,7 @@ export default function Resume({
   } else {
     return (
       <div className="resume-container">
-        <small>There is no information yet.*</small>
+        <small className="no-information">There is no information yet.*</small>
       </div>
     );
   }

@@ -1,9 +1,11 @@
-.resume-container{
+#resume-container{
+    width: 100%;
     padding: 1em;
 }
 
 .personal-data-container{
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -29,6 +31,7 @@
     display: flex;
     flex-direction: column;
     align-items: start;
+    width: max-content;
 }
 
 .email-container, .phone-container{
@@ -36,9 +39,31 @@
     justify-content: center;
     align-items: center;
     gap: .5em;
+    object-fit: cover;
 }
 
 .email-container img, .phone-container img {
     width: 20px;
     height: 20px;
+}
+
+.main-responsibilities{
+    width: 100%;
+    
+}
+
+.main-responsibilities > p{
+    margin-top: .8em;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: left;
+    line-height: 1.45;
+    width: 60%;
+}
+
+.no-information{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 4em;
 }

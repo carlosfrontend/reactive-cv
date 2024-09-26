@@ -19,6 +19,25 @@
 .add-btn img{
     width: 60px;
     height: 60px;
+   
+}
+
+.add-btn img:hover{
+    animation: rotateBtn .4s ease-in alternate-reverse;
+   
+}
+
+@keyframes rotateBtn {
+    0%{
+        transform: rotate(0) scale(1);
+    }
+
+    50%{
+        transform: rotate(-5deg) scale(.8);
+    }
+    100%{
+        transform: rotate(200deg) scale(1);
+    }
 }
 
 .default-ed-info{
@@ -35,7 +54,7 @@
 }
 
 .default-ed-info h2 {
-    font-size: 1.9rem;
+    font-size: 1.6rem;
     line-height: 1;
 }
 
